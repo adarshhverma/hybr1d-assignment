@@ -5,6 +5,8 @@ import { Link } from "react-router-dom"
 import { FTECH_BLOG_DETAILS } from "../../redux/action.types"
 import "./index.css"
 import CommentCard from "./CommentCard"
+import { HeartFilled } from '@ant-design/icons';
+
 
 function BlogPostPage() {
 
@@ -22,7 +24,7 @@ function BlogPostPage() {
             <p className="blogpage-crums" >
                 <Link to="/">
                     <span>Home</span>
-                </Link>/ Blog-{blogDetails.id ? blogDetails.id : "000"}
+                </Link> / Blog-{blogDetails.id ? blogDetails.id : "000"}
             </p>
             {blogDetails.title ? <h1 className="blogpage-title" >{blogDetails.title}</h1> :
                 <Space>
@@ -69,6 +71,11 @@ function BlogPostPage() {
                     <a href={blogDetails.url} target="_blank">
                         <p className="blogpage-url" >{blogDetails.url}</p>
                     </a>
+                    {blogDetails.points && <Row>
+                        <HeartFilled className="card-icon" />
+                        <p className="card-stat">{blogDetails.points}</p>
+
+                    </Row>}
                     {blogDetails.created_at &&
                         <p className="blogpage-time" >Created at: {new Date(blogDetails.created_at).toLocaleDateString("en-GB", {
                             day: "numeric",

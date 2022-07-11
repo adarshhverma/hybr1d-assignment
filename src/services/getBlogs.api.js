@@ -4,7 +4,7 @@ import api from "./axiosConfig";
 export function* getBlogs(action) {
     let resp;
     yield api
-        .get("/search?query=test", )
+        .get(`/search?query=${action.payload.searchText}`,)
         .then((response) => {
             resp = response;
 
